@@ -4,7 +4,6 @@ from mysql.connector import Error
 
 
 def connect(database):
-    """ Connect to MySQL database """
     try:
         if database.is_connected():
             print('Connected to MySQL database')
@@ -35,9 +34,6 @@ if __name__ == '__main__':
     rows = get_query(query, db)
     data = pd.DataFrame(data=rows, columns=['Необходимо', 'Модель'])
     print(data)
-    # data.to_excel('order.xlsx', sheet_name='sheet_1', index=False)
+    data.to_excel('order.xlsx', sheet_name='sheet_1', index=False)
     db.close()
-    if db.is_connected():
-        print('MySQL still connected')
-    else:
-        print('MySQL disconnected')
+
